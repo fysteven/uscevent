@@ -18,7 +18,7 @@
 		0127A5631B9197AF00E0C007 /* EventListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A5611B9197AF00E0C007 /* EventListVC.m */; };
 		0127A5641B9197AF00E0C007 /* EventListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0127A5621B9197AF00E0C007 /* EventListVC.xib */; };
 		0127A5671B91A46F00E0C007 /* EventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A5661B91A46F00E0C007 /* EventModel.m */; };
-		0127A56A1B91A92500E0C007 /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A5691B91A92500E0C007 /* CalendarModel.m */; };
+		0127A56D1B91ACB200E0C007 /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A56C1B91ACB200E0C007 /* CalendarModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,8 @@
 		0127A5621B9197AF00E0C007 /* EventListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListVC.xib; sourceTree = "<group>"; };
 		0127A5651B91A46F00E0C007 /* EventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModel.h; sourceTree = "<group>"; };
 		0127A5661B91A46F00E0C007 /* EventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModel.m; sourceTree = "<group>"; };
-		0127A5681B91A92500E0C007 /* CalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarModel.h; path = ../CalendarModel.h; sourceTree = "<group>"; };
-		0127A5691B91A92500E0C007 /* CalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarModel.m; path = ../CalendarModel.m; sourceTree = "<group>"; };
+		0127A56B1B91ACB200E0C007 /* CalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarModel.h; sourceTree = "<group>"; };
+		0127A56C1B91ACB200E0C007 /* CalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +110,8 @@
 				0127A5371B9196DB00E0C007 /* Supporting Files */,
 				0127A5651B91A46F00E0C007 /* EventModel.h */,
 				0127A5661B91A46F00E0C007 /* EventModel.m */,
-				0127A5681B91A92500E0C007 /* CalendarModel.h */,
-				0127A5691B91A92500E0C007 /* CalendarModel.m */,
+				0127A56B1B91ACB200E0C007 /* CalendarModel.h */,
+				0127A56C1B91ACB200E0C007 /* CalendarModel.m */,
 			);
 			path = uscevent;
 			sourceTree = "<group>";
@@ -244,10 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0127A5631B9197AF00E0C007 /* EventListVC.m in Sources */,
-				0127A56A1B91A92500E0C007 /* CalendarModel.m in Sources */,
 				0127A5431B9196DB00E0C007 /* SecondViewController.m in Sources */,
 				0127A5671B91A46F00E0C007 /* EventModel.m in Sources */,
 				0127A53D1B9196DB00E0C007 /* AppDelegate.m in Sources */,
+				0127A56D1B91ACB200E0C007 /* CalendarModel.m in Sources */,
 				0127A5401B9196DB00E0C007 /* FirstViewController.m in Sources */,
 				0127A53A1B9196DB00E0C007 /* main.m in Sources */,
 			);
