@@ -19,6 +19,9 @@
 		0127A5641B9197AF00E0C007 /* EventListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0127A5621B9197AF00E0C007 /* EventListVC.xib */; };
 		0127A5671B91A46F00E0C007 /* EventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A5661B91A46F00E0C007 /* EventModel.m */; };
 		0127A56D1B91ACB200E0C007 /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A56C1B91ACB200E0C007 /* CalendarModel.m */; };
+		012D204E1B92AFB9000897C8 /* EventEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D204D1B92AFB9000897C8 /* EventEngine.m */; };
+		012D20511B92B141000897C8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D20501B92B141000897C8 /* Constants.m */; };
+		012D20551B92B29A000897C8 /* NSError+Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D20541B92B29A000897C8 /* NSError+Addtions.m */; };
 		5CB50186C9A5F5BFEAD92294 /* libPods-uscevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C8CF022B13DC3359103345 /* libPods-uscevent.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,12 @@
 		0127A5661B91A46F00E0C007 /* EventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModel.m; sourceTree = "<group>"; };
 		0127A56B1B91ACB200E0C007 /* CalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarModel.h; sourceTree = "<group>"; };
 		0127A56C1B91ACB200E0C007 /* CalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarModel.m; sourceTree = "<group>"; };
+		012D204C1B92AFB9000897C8 /* EventEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEngine.h; sourceTree = "<group>"; };
+		012D204D1B92AFB9000897C8 /* EventEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEngine.m; sourceTree = "<group>"; };
+		012D204F1B92B141000897C8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		012D20501B92B141000897C8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		012D20531B92B29A000897C8 /* NSError+Addtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Addtions.h"; sourceTree = "<group>"; };
+		012D20541B92B29A000897C8 /* NSError+Addtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Addtions.m"; sourceTree = "<group>"; };
 		170F4355BFE42369BDDACEE0 /* Pods-uscevent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uscevent.release.xcconfig"; path = "Pods/Target Support Files/Pods-uscevent/Pods-uscevent.release.xcconfig"; sourceTree = "<group>"; };
 		55D5CB04997CC6B6ED890C3F /* Pods-uscevent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uscevent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uscevent/Pods-uscevent.debug.xcconfig"; sourceTree = "<group>"; };
 		E8C8CF022B13DC3359103345 /* libPods-uscevent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uscevent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +111,7 @@
 		0127A5361B9196DB00E0C007 /* uscevent */ = {
 			isa = PBXGroup;
 			children = (
+				012D20521B92B262000897C8 /* Categories */,
 				0127A5601B9197AF00E0C007 /* EventListVC.h */,
 				0127A5611B9197AF00E0C007 /* EventListVC.m */,
 				0127A5621B9197AF00E0C007 /* EventListVC.xib */,
@@ -119,6 +129,10 @@
 				0127A5661B91A46F00E0C007 /* EventModel.m */,
 				0127A56B1B91ACB200E0C007 /* CalendarModel.h */,
 				0127A56C1B91ACB200E0C007 /* CalendarModel.m */,
+				012D204C1B92AFB9000897C8 /* EventEngine.h */,
+				012D204D1B92AFB9000897C8 /* EventEngine.m */,
+				012D204F1B92B141000897C8 /* Constants.h */,
+				012D20501B92B141000897C8 /* Constants.m */,
 			);
 			path = uscevent;
 			sourceTree = "<group>";
@@ -147,6 +161,15 @@
 				0127A5551B9196DB00E0C007 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		012D20521B92B262000897C8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				012D20531B92B29A000897C8 /* NSError+Addtions.h */,
+				012D20541B92B29A000897C8 /* NSError+Addtions.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		2362F4235F9B30A8BAFEAFC0 /* Frameworks */ = {
@@ -302,13 +325,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				012D204E1B92AFB9000897C8 /* EventEngine.m in Sources */,
 				0127A5631B9197AF00E0C007 /* EventListVC.m in Sources */,
 				0127A5431B9196DB00E0C007 /* SecondViewController.m in Sources */,
 				0127A5671B91A46F00E0C007 /* EventModel.m in Sources */,
 				0127A53D1B9196DB00E0C007 /* AppDelegate.m in Sources */,
+				012D20551B92B29A000897C8 /* NSError+Addtions.m in Sources */,
 				0127A56D1B91ACB200E0C007 /* CalendarModel.m in Sources */,
 				0127A5401B9196DB00E0C007 /* FirstViewController.m in Sources */,
 				0127A53A1B9196DB00E0C007 /* main.m in Sources */,
+				012D20511B92B141000897C8 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
