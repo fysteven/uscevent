@@ -55,19 +55,31 @@
             self.titleLabel.text = eventModel.title;
             self.scheduleLabel.text = eventModel.schedule;
             
+            if (eventModel.description1.length) {
+                UIFont *font = [UIFont systemFontOfSize:17.0];
+                NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+                
+                NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[eventModel.description1 dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+                
+                [attrStr beginEditing];
+                [attrStr setAttributes:attrsDictionary range:NSMakeRange(0, [[attrStr string] length])];
+                [attrStr endEditing];
+                
+                self.descriptionLabel.attributedText = attrStr;
+                self.descriptionTitleLabel.hidden = NO;
+            } else {
+                self.descriptionLabel.text = nil;
+                self.descriptionTitleLabel.text = nil;
+            }
             
-            UIFont *font = [UIFont systemFontOfSize:17.0];
-            NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-            
-            NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[eventModel.description1 dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-            
-            [attrStr beginEditing];
-            [attrStr setAttributes:attrsDictionary range:NSMakeRange(0, [[attrStr string] length])];
-            [attrStr endEditing];
-            
-            self.descriptionLabel.attributedText = attrStr;
             self.locationLabel.text = [self configureLocation:eventModel];
-            self.audienceLabel.text = [self getArrayOfStrings:eventModel.audience];
+            
+            if (eventModel.audience) {
+                self.audienceLabel.text = [self getArrayOfStrings:eventModel.audience];
+                self.audienceTitleLabel.hidden = NO;
+            } else {
+                self.audienceTitleLabel.hidden = YES;
+            }
             
         }
     }];
@@ -75,11 +87,18 @@
 
 - (NSString *)configureLocation:(EventModel *)model {
     NSMutableString *mutableString = [[NSMutableString alloc] initWithCapacity:1];
-    
-    [mutableString appendFormat:@"%@\n", model.venue];
-    [mutableString appendFormat:@"%@\n", model.campus];
-    [mutableString appendFormat:@"%@ %@\n", model.building_code, model.room];
-    [mutableString appendFormat:@"%@", model.address];
+    if (model.venue.length) {
+        [mutableString appendFormat:@"%@\n", model.venue];
+    }
+    if (model.campus.length) {
+        [mutableString appendFormat:@"%@\n", model.campus];
+    }
+    if (model.building_code.length || model.room.length) {
+        [mutableString appendFormat:@"%@ %@\n", model.building_code, model.room];
+    }
+    if (model.address.length) {
+        [mutableString appendFormat:@"%@", model.address];
+    }
     
     return [NSString stringWithString:mutableString];
 }

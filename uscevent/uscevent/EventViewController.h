@@ -14,7 +14,9 @@
 
 @property IBOutlet UILabel *titleLabel;
 @property IBOutlet UILabel *scheduleLabel;
+@property IBOutlet UILabel *descriptionTitleLabel;
 @property IBOutlet UILabel *descriptionLabel;
 @property IBOutlet UILabel *locationLabel;
+@property IBOutlet UILabel *audienceTitleLabel;
 @property IBOutlet UILabel *audienceLabel;
 @end

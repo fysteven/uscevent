@@ -59,10 +59,13 @@
     }
     EventModel *model = self.eventModels[indexPath.row];
     
+    //cell.textLabel.frame = CGRectMake(cell.textLabel.frame.origin.x, cell.textLabel.frame.origin.y, cell.textLabel.frame.size.width, 40);
+    
     cell.textLabel.text = model.title;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.numberOfLines = 0;
     cell.detailTextLabel.text = model.next_occurrence;
+    //[cell.textLabel layoutIfNeeded];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
