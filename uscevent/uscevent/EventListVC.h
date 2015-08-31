@@ -10,4 +10,5 @@
 
 @interface EventListVC : UITableViewController
 @property NSArray *eventModels;
+
 @end

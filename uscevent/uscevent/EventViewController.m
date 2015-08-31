@@ -53,11 +53,15 @@
     [engine getEvent:event_id completion:^(EventModel *eventModel, NSError *anError) {
         if (eventModel) {
             self.titleLabel.text = eventModel.title;
+            //[self.titleLabel sizeToFit];
             self.scheduleLabel.text = eventModel.schedule;
+            //[self.scheduleLabel sizeToFit];
             self.descriptionLabel.text = eventModel.description1;
-            
+            //[self.descriptionLabel sizeToFit];
             self.locationLabel.text = [self configureLocation:eventModel];
+            //[self.locationLabel sizeToFit];
             self.audienceLabel.text = [self getArrayOfStrings:eventModel.audience];
+            //[self.audienceLabel sizeToFit];
             
         }
     }];

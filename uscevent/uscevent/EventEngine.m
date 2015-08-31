@@ -72,7 +72,7 @@
         model.parent_calendar_id = event[@"parent_calendar_id"];
         model.parent_calendar = event[@"parent_calendar"];
         model.sponsors = event[@"sponsors"];
-        model.audience = event[@"audience"];
+        model.audience = event[@"audiences"];
         model.schedule = event[@"schedule"];
         model.dates = event[@"dates"];
         model.times = event[@"times"];

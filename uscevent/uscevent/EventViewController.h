@@ -10,6 +10,7 @@
 
 @interface EventViewController : UIViewController
 - (void)configureEvent:(NSString *)event_id;
+- (void)configure:(NSNumber *)event_id;
 
 @property IBOutlet UILabel *titleLabel;
 @property IBOutlet UILabel *scheduleLabel;
