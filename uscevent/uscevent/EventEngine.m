@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "EventModel.h"
 
+
 @implementation EventEngine
 
 - (void)getEvent:(NSNumber *)event_id completion:(void (^)(EventModel *eventModel, NSError *anError))completion {
@@ -148,6 +149,66 @@
         }
         
     } failure:^(AFHTTPRequestOperation * operation, NSError * anError) {
+        if (completion) {
+            completion(nil, anError);
+        }
+    }];
+}
+
+
+#pragma mark - calendars
+
+- (void)getCalendarsCompletion:(void (^)(NSArray *calendarModels, NSError *anError))completion {
+    [self requestCalendarsCompletion:^(NSArray *calendars, NSError *anError) {
+        NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:1];
+        if (calendars) {
+            for (NSDictionary *calendar in calendars) {
+                CalendarModel *model = [self parseCalendar:calendar];
+                [mutableArray addObject:model];
+            }
+        }
+        NSArray *result = [NSArray arrayWithArray:mutableArray];
+        if (completion) {
+            completion(result, anError);
+        }
+    }];
+    
+}
+
+- (CalendarModel *)parseCalendar:(NSDictionary *)calendar {
+    CalendarModel *model = [CalendarModel new];
+    model.calendar_id = calendar[@"calendar_id"];
+    model.name = calendar[@"name"];
+    model.description1 = calendar[@"description"];
+    model.website_url = calendar[@"website_url"];
+    model.visible = calendar[@"visible"];
+    model.activity = calendar[@"activity"];
+    model.categories = calendar[@"categories"];
+    model.share_with = calendar[@"share_with"];
+    return model;
+}
+
+- (void)requestCalendarsCompletion:(void (^)(NSArray *calendars, NSError *anError))completion {
+    
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@", base_url]];
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
+    
+    NSString *urlString = [NSString stringWithFormat:@"calendars"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation * operation, id responseObject) {
+        NSArray *array;
+        NSError *anError;
+        if (responseObject) {
+            array = responseObject;
+        } else {
+            anError = [NSError errorWithMessage:@"calendars are not available"];
+        }
+        if (completion) {
+            completion(array, anError);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError * anError) {
         if (completion) {
             completion(nil, anError);
         }

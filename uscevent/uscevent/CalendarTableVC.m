@@ -1,21 +1,21 @@
 //
-//  EventListVC.m
+//  CalendarTableVC.m
 //  uscevent
 //
-//  Created by Yao Fan on 8/29/15.
+//  Created by Yao Fan on 8/31/15.
 //  Copyright (c) 2015 frankhome. All rights reserved.
 //
 
-#import "EventListVC.h"
-#import "EventModel.h"
+#import "CalendarTableVC.h"
+#import "CalendarModel.h"
 #import "EventEngine.h"
-#import "EventViewController.h"
+#import "EventListVC.h"
 
-@interface EventListVC ()
-
+@interface CalendarTableVC ()
+@property NSArray *calendars;
 @end
 
-@implementation EventListVC
+@implementation CalendarTableVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +25,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //[self configureEventModels];
+    
+    self.navigationItem.title = @"USC Calendars";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +43,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    if (self.eventModels != nil) {
-        return self.eventModels.count;
+    if (self.calendars) {
+        return self.calendars.count;
     } else {
         return 0;
     }
@@ -51,27 +52,19 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier1"];
     
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"reuseIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuseIdentifier1"];
     }
-    EventModel *model = self.eventModels[indexPath.row];
+    CalendarModel *model = self.calendars[indexPath.row];
     
-    cell.textLabel.text = model.title;
-    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    cell.textLabel.numberOfLines = 0;
-    cell.detailTextLabel.text = model.next_occurrence;
+    cell.textLabel.text = model.name;
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
     
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70;
 }
 
 
@@ -116,15 +109,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EventViewController *detailViewController = [[EventViewController alloc] init];
+    EventListVC *detailViewController = [[EventListVC alloc] init];
     
     // Pass the selected object to the new view controller.
-    EventModel *model = self.eventModels[indexPath.row];
-    
-    [detailViewController configure:model.event_id];
-    
+    CalendarModel *model = self.calendars[indexPath.row];
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController configureEventModelsForCalendar:model.calendar_id];
+    detailViewController.navigationItem.title = model.name;
 }
 
 
@@ -138,13 +130,11 @@
 }
 */
 
-- (void)configureEventModelsForCalendar:(NSNumber *)calendar_id {
+- (void)downloadCalendars {
     EventEngine *engine = [EventEngine new];
-    //NSNumber *calendar_id = @([@"308" integerValue]);
-    [engine getEventsForCalendar:calendar_id completion:^(NSArray *eventModels, NSError *anError) {
-        if (eventModels) {
-            self.eventModels = eventModels;
-            //[self.tableView reloadData];
+    [engine getCalendarsCompletion:^(NSArray *calendarModels, NSError *anError) {
+        if (calendarModels) {
+            self.calendars = calendarModels;
             NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
             [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         }

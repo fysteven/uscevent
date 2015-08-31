@@ -10,6 +10,7 @@
 #import "EventViewController.h"
 #import "EventEngine.h"
 #import "EventListVC.h"
+#import "CalendarTableVC.h"
 
 @interface AppDelegate ()
 
@@ -54,10 +55,11 @@
 - (void)configureRootViewController {
     //UIViewController *controller = [UIViewController new];
     //EventViewController *controller = [[EventViewController alloc] init];
-    EventListVC *controller = [EventListVC new];
-     
+    //EventListVC *controller = [EventListVC new];
+    CalendarTableVC *controller = [CalendarTableVC new];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
-    controller.navigationItem.title = @"Career Center";
+    [controller downloadCalendars];
+    //controller.navigationItem.title = @"Career Center";
 }
 
 @end

@@ -24,6 +24,8 @@
 		012D20551B92B29A000897C8 /* NSError+Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D20541B92B29A000897C8 /* NSError+Addtions.m */; };
 		012D20591B9390AA000897C8 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D20571B9390AA000897C8 /* EventViewController.m */; };
 		012D205A1B9390AA000897C8 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 012D20581B9390AA000897C8 /* EventViewController.xib */; };
+		012D20601B943633000897C8 /* CalendarTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D205E1B943633000897C8 /* CalendarTableVC.m */; };
+		012D20611B943633000897C8 /* CalendarTableVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 012D205F1B943633000897C8 /* CalendarTableVC.xib */; };
 		5CB50186C9A5F5BFEAD92294 /* libPods-uscevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C8CF022B13DC3359103345 /* libPods-uscevent.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,9 @@
 		012D20561B9390AA000897C8 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		012D20571B9390AA000897C8 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		012D20581B9390AA000897C8 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
+		012D205D1B943633000897C8 /* CalendarTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarTableVC.h; sourceTree = "<group>"; };
+		012D205E1B943633000897C8 /* CalendarTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarTableVC.m; sourceTree = "<group>"; };
+		012D205F1B943633000897C8 /* CalendarTableVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarTableVC.xib; sourceTree = "<group>"; };
 		170F4355BFE42369BDDACEE0 /* Pods-uscevent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uscevent.release.xcconfig"; path = "Pods/Target Support Files/Pods-uscevent/Pods-uscevent.release.xcconfig"; sourceTree = "<group>"; };
 		55D5CB04997CC6B6ED890C3F /* Pods-uscevent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uscevent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uscevent/Pods-uscevent.debug.xcconfig"; sourceTree = "<group>"; };
 		E8C8CF022B13DC3359103345 /* libPods-uscevent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-uscevent.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +125,9 @@
 				0127A5601B9197AF00E0C007 /* EventListVC.h */,
 				0127A5611B9197AF00E0C007 /* EventListVC.m */,
 				0127A5621B9197AF00E0C007 /* EventListVC.xib */,
+				012D205D1B943633000897C8 /* CalendarTableVC.h */,
+				012D205E1B943633000897C8 /* CalendarTableVC.m */,
+				012D205F1B943633000897C8 /* CalendarTableVC.xib */,
 				0127A53B1B9196DB00E0C007 /* AppDelegate.h */,
 				0127A53C1B9196DB00E0C007 /* AppDelegate.m */,
 				0127A53E1B9196DB00E0C007 /* FirstViewController.h */,
@@ -284,6 +292,7 @@
 				012D205A1B9390AA000897C8 /* EventViewController.xib in Resources */,
 				0127A5481B9196DB00E0C007 /* Images.xcassets in Resources */,
 				0127A5641B9197AF00E0C007 /* EventListVC.xib in Resources */,
+				012D20611B943633000897C8 /* CalendarTableVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +350,7 @@
 				0127A53D1B9196DB00E0C007 /* AppDelegate.m in Sources */,
 				012D20551B92B29A000897C8 /* NSError+Addtions.m in Sources */,
 				0127A56D1B91ACB200E0C007 /* CalendarModel.m in Sources */,
+				012D20601B943633000897C8 /* CalendarTableVC.m in Sources */,
 				0127A5401B9196DB00E0C007 /* FirstViewController.m in Sources */,
 				0127A53A1B9196DB00E0C007 /* main.m in Sources */,
 				012D20511B92B141000897C8 /* Constants.m in Sources */,

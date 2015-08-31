@@ -10,5 +10,6 @@
 
 @interface EventListVC : UITableViewController
 @property NSArray *eventModels;
+- (void)configureEventModelsForCalendar:(NSNumber *)calendar_id;
 
 @end
