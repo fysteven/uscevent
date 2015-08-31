@@ -53,15 +53,21 @@
     [engine getEvent:event_id completion:^(EventModel *eventModel, NSError *anError) {
         if (eventModel) {
             self.titleLabel.text = eventModel.title;
-            //[self.titleLabel sizeToFit];
             self.scheduleLabel.text = eventModel.schedule;
-            //[self.scheduleLabel sizeToFit];
-            self.descriptionLabel.text = eventModel.description1;
-            //[self.descriptionLabel sizeToFit];
+            
+            
+            UIFont *font = [UIFont systemFontOfSize:17.0];
+            NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+            
+            NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[eventModel.description1 dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+            
+            [attrStr beginEditing];
+            [attrStr setAttributes:attrsDictionary range:NSMakeRange(0, [[attrStr string] length])];
+            [attrStr endEditing];
+            
+            self.descriptionLabel.attributedText = attrStr;
             self.locationLabel.text = [self configureLocation:eventModel];
-            //[self.locationLabel sizeToFit];
             self.audienceLabel.text = [self getArrayOfStrings:eventModel.audience];
-            //[self.audienceLabel sizeToFit];
             
         }
     }];

@@ -57,6 +57,7 @@
     EventListVC *controller = [EventListVC new];
      
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+    controller.navigationItem.title = @"Career Center";
 }
 
 @end
