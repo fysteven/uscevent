@@ -26,6 +26,24 @@
     }];
 }
 
+- (void)getEventsForCalendar:(NSNumber *)calendar_id completion:(void (^)(NSArray *eventModels, NSError *anError))completion {
+    [self requestEventsOfCalendar:calendar_id completion:^(NSArray *events, NSError *anError) {
+        
+        NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:1];
+        if (events) {
+            for (NSDictionary *event in events) {
+                EventModel *model = [EventModel new];
+                model = [self parseEvent:event];
+                [mutableArray addObject:model];
+            }
+        }
+        NSArray *result = [NSArray arrayWithArray:mutableArray];
+        if (completion) {
+            completion(result, anError);
+        }
+    }];
+}
+
 - (EventModel *)parseEvent:(NSDictionary *)event {
     EventModel *model = [EventModel new];
     if (event) {
@@ -54,6 +72,13 @@
         model.parent_calendar_id = event[@"parent_calendar_id"];
         model.parent_calendar = event[@"parent_calendar"];
         model.sponsors = event[@"sponsors"];
+        model.audience = event[@"audience"];
+        model.schedule = event[@"schedule"];
+        model.dates = event[@"dates"];
+        model.times = event[@"times"];
+        model.first_occurrence = event[@"first_occurrence"];
+        model.last_occurrence = event[@"last_occurrence"];
+        model.next_occurrence = event[@"next_occurrence"];
         
     }
     return model;
@@ -92,6 +117,41 @@
         }
     }];
     
+}
+
+- (void)requestEventsOfCalendar:(NSNumber *)calendar_id completion:(void (^)(NSArray *events, NSError *anError))completion {
+    
+    if (calendar_id == nil) {
+        NSError *anError = [NSError errorWithMessage:@"calendar_id cannot be empty or nil"];
+        if (completion) {
+            completion(nil, anError);
+        }
+        return;
+    }
+    
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@", base_url]];
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
+    
+    NSString *urlString = [NSString stringWithFormat:@"headlines/%@", calendar_id];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation * operation, id responseObject) {
+        NSArray *array;
+        NSError *anError;
+        if (responseObject) {
+            array = responseObject;
+        } else {
+            anError = [NSError errorWithMessage:@"events are not available"];
+        }
+        if (completion) {
+            completion(array, anError);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * anError) {
+        if (completion) {
+            completion(nil, anError);
+        }
+    }];
 }
 
 

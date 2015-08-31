@@ -7,6 +7,8 @@
 //
 
 #import "FirstViewController.h"
+#import "EventEngine.h"
+#import "EventViewController.h"
 
 @interface FirstViewController ()
 
@@ -17,6 +19,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    EventEngine *engine = [EventEngine new];
+    NSNumber *event_id = @([@"873295" integerValue]);
+    [engine getEvent:event_id completion:^(EventModel *eventModel, NSError *anError) {
+        NSLog(@"%@", eventModel);
+    }];
+    
+    EventViewController *controller = [EventViewController new];
+    [controller configureEvent:@"873295"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

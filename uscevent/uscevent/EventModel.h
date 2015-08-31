@@ -36,6 +36,12 @@
 @property NSString *parent_calendar_id;
 @property NSString *parent_calendar;
 @property NSArray *sponsors;
+@property NSArray *audience;
+@property NSString *schedule;
 @property NSString *dates;
 @property NSString *times;
+@property NSString *first_occurrence;
+@property NSString *last_occurrence;
+@property NSString *next_occurrence;
+
 @end

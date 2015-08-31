@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "EventViewController.h"
+#import "EventEngine.h"
+#import "EventListVC.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self configureRootViewController];
+    EventEngine *engine = [EventEngine new];
+    NSNumber *calendar_id = @([@"308" integerValue]);
+    [engine getEventsForCalendar:calendar_id completion:^(NSArray *eventModels, NSError *anError) {
+        
+    }];
     return YES;
 }
 
@@ -40,6 +49,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)configureRootViewController {
+    //UIViewController *controller = [UIViewController new];
+    //EventViewController *controller = [[EventViewController alloc] init];
+    EventListVC *controller = [EventListVC new];
+     
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
 }
 
 @end

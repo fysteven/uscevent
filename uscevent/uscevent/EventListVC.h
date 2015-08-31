@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface EventListVC : UITableViewController
-
+@property NSArray *eventModels;
 @end

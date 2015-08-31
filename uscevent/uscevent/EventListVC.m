@@ -7,6 +7,8 @@
 //
 
 #import "EventListVC.h"
+#import "EventModel.h"
+#import "EventEngine.h"
 
 @interface EventListVC ()
 
@@ -22,6 +24,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self configureEventModels];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,18 +41,35 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    if (self.eventModels != nil) {
+        return self.eventModels.count;
+    } else {
+        return 0;
+    }
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
     
     // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"reuseIdentifier"];
+    }
+    EventModel *model = self.eventModels[indexPath.row];
+    
+    cell.textLabel.text = model.title;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.numberOfLines = 0;
+    cell.detailTextLabel.text = model.next_occurrence;
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 72;
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -110,5 +130,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)configureEventModels {
+    EventEngine *engine = [EventEngine new];
+    NSNumber *calendar_id = @([@"308" integerValue]);
+    [engine getEventsForCalendar:calendar_id completion:^(NSArray *eventModels, NSError *anError) {
+        if (eventModels) {
+            self.eventModels = eventModels;
+            [self.tableView reloadData];
+        }
+    }];
+}
 
 @end
