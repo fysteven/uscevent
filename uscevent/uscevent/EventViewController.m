@@ -88,15 +88,24 @@
 - (NSString *)configureLocation:(EventModel *)model {
     NSMutableString *mutableString = [[NSMutableString alloc] initWithCapacity:1];
     if (model.venue.length) {
-        [mutableString appendFormat:@"%@\n", model.venue];
+        [mutableString appendFormat:@"%@", model.venue];
     }
     if (model.campus.length) {
-        [mutableString appendFormat:@"%@\n", model.campus];
+        if ([mutableString hasSuffix:@"\n"] == NO) {
+            [mutableString appendString:@"\n"];
+        }
+        [mutableString appendFormat:@"%@", model.campus];
     }
     if (model.building_code.length || model.room.length) {
-        [mutableString appendFormat:@"%@ %@\n", model.building_code, model.room];
+        if ([mutableString hasSuffix:@"\n"] == NO) {
+            [mutableString appendString:@"\n"];
+        }
+        [mutableString appendFormat:@"%@ %@", model.building_code, model.room];
     }
     if (model.address.length) {
+        if ([mutableString hasSuffix:@"\n"] == NO) {
+            [mutableString appendString:@"\n"];
+        }
         [mutableString appendFormat:@"%@", model.address];
     }
     
