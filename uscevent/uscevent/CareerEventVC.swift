@@ -11,11 +11,18 @@ import WebKit
 
 class CareerEventVC: UIViewController {
     var webView: WKWebView?
+    var webView2: UIWebView?
     
     override func loadView() {
         super.loadView()
-        self.webView = WKWebView(frame: self.view.bounds)
-        self.view = self.webView
+        
+        if NSClassFromString("WKWebView") != nil {
+            self.webView = WKWebView(frame: self.view.bounds)
+            self.view = self.webView
+        } else {
+            self.webView2 = UIWebView(frame: self.view.bounds)
+            self.view = self.webView2
+        }
         
     }
     
@@ -23,7 +30,11 @@ class CareerEventVC: UIViewController {
         super.viewDidLoad()
         let url = NSURL(string: "https://careers.usc.edu/eventcalendar/?theme=mobile")
         let request = NSURLRequest(URL: url!)
-        self.webView!.loadRequest(request)
+        if self.webView != nil {
+            self.webView!.loadRequest(request)
+        } else {
+            self.webView2!.loadRequest(request)
+        }
     }
     
     /*
