@@ -28,7 +28,7 @@ class CareerEventVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = NSURL(string: "https://careers.usc.edu/eventcalendar/?theme=mobile")
+        let url = NSURL(string: "http://careers.usc.edu/eventcalendar/?theme=mobile")
         let request = NSURLRequest(URL: url!)
         if self.webView != nil {
             self.webView!.loadRequest(request)
