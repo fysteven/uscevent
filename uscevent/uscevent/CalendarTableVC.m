@@ -10,6 +10,7 @@
 #import "CalendarModel.h"
 #import "EventEngine.h"
 #import "EventListVC.h"
+#import "USC_Events-Swift.h"
 
 @interface CalendarTableVC ()
 @property NSArray *calendars;
@@ -27,6 +28,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.navigationItem.title = @"USC Calendars";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Magic" style:UIBarButtonItemStylePlain target:self action:@selector(openCareerEventsAction)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -139,6 +142,17 @@
             [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }];
+}
+
+- (void)openCareerEventsAction {
+    CareerEventVC *vc = [CareerEventVC new];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    navigationController.navigationBar.topItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissVCAction)];
+}
+
+- (void)dismissVCAction {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0118AE851BABE1CA00F0ED7F /* CareerEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0118AE841BABE1CA00F0ED7F /* CareerEventVC.swift */; settings = {ASSET_TAGS = (); }; };
 		0127A53A1B9196DB00E0C007 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A5391B9196DB00E0C007 /* main.m */; };
 		0127A53D1B9196DB00E0C007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A53C1B9196DB00E0C007 /* AppDelegate.m */; };
 		0127A5401B9196DB00E0C007 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0127A53F1B9196DB00E0C007 /* FirstViewController.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0118AE811BABE16D00F0ED7F /* uscevent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uscevent-Bridging-Header.h"; sourceTree = "<group>"; };
+		0118AE841BABE1CA00F0ED7F /* CareerEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CareerEventVC.swift; sourceTree = "<group>"; };
 		0127A5341B9196DB00E0C007 /* USC Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "USC Events.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0127A5381B9196DB00E0C007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0127A5391B9196DB00E0C007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				012D20561B9390AA000897C8 /* EventViewController.h */,
 				012D20571B9390AA000897C8 /* EventViewController.m */,
 				012D20581B9390AA000897C8 /* EventViewController.xib */,
+				0118AE811BABE16D00F0ED7F /* uscevent-Bridging-Header.h */,
+				0118AE841BABE1CA00F0ED7F /* CareerEventVC.swift */,
 			);
 			path = uscevent;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 		0127A52C1B9196DB00E0C007 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = frankhome;
 				TargetAttributes = {
@@ -353,6 +359,7 @@
 				012D20601B943633000897C8 /* CalendarTableVC.m in Sources */,
 				0127A5401B9196DB00E0C007 /* FirstViewController.m in Sources */,
 				0127A53A1B9196DB00E0C007 /* main.m in Sources */,
+				0118AE851BABE1CA00F0ED7F /* CareerEventVC.swift in Sources */,
 				012D20511B92B141000897C8 /* Constants.m in Sources */,
 				012D20591B9390AA000897C8 /* EventViewController.m in Sources */,
 			);
@@ -481,9 +488,14 @@
 			baseConfigurationReference = 55D5CB04997CC6B6ED890C3F /* Pods-uscevent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = uscevent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "USC Events";
+				SWIFT_OBJC_BRIDGING_HEADER = "uscevent/uscevent-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -493,9 +505,13 @@
 			baseConfigurationReference = 170F4355BFE42369BDDACEE0 /* Pods-uscevent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = uscevent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "USC Events";
+				SWIFT_OBJC_BRIDGING_HEADER = "uscevent/uscevent-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
